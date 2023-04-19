@@ -12,6 +12,7 @@ class BlogModel(BaseModel):
     content: str
     nb_comments: int
     published: Optional[bool]
+    tags: List[str] = []
 
 @router.post('/new/{id}')
 def create_blog(blog: BlogModel, id: int, version: int=1):
