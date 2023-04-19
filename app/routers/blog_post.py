@@ -28,8 +28,9 @@ def create_comment(blog: BlogModel, id: int,
                                            description='Some description for comment_id',
                                            alias='commentId',
                                            deprecated=True),
-                   content: str = Body(...,
-                                       min_length=10)):  # ... makes a field required
+                   content: str = Body(..., # ... makes a field required
+                                       min_length=10,
+                                       max_length=50)):
     return {
         'blog': blog,
         'id': id,
