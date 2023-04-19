@@ -26,7 +26,8 @@ def create_comment(blog: BlogModel, id: int,
                    comment_id: int = Query(None,
                                            title='Id of the comment',
                                            description='Some description for comment_id',
-                                           alias='commentId')):
+                                           alias='commentId',
+                                           deprecated=True)):
     return {
         'blog': blog,
         'id': id,
