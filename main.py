@@ -13,7 +13,7 @@ def index():
     #return {'message': 'All blogs provided'}
 
 @app.get('/blog/all')
-def get_all_blogs(page, page_size):
+def get_all_blogs(page=1, page_size=10):
     return {'message': f'All {page_size} blogs on page {page}'}
 
 class BlogType(str, Enum):
