@@ -25,7 +25,8 @@ def create_blog(blog: BlogModel, id: int, version: int=1):
 def create_comment(blog: BlogModel, id: int,
                    comment_id: int = Query(None,
                                            title='Id of the comment',
-                                           description='Some description for comment_id')):
+                                           description='Some description for comment_id',
+                                           alias='commentId')):
     return {
         'blog': blog,
         'id': id,
