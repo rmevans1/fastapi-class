@@ -30,7 +30,8 @@ def create_comment(blog: BlogModel, id: int,
                                            deprecated=True),
                    content: str = Body(..., # ... makes a field required
                                        min_length=10,
-                                       max_length=50)):
+                                       max_length=50,
+                                       regex='^[a-z\s]*$')):
     return {
         'blog': blog,
         'id': id,
