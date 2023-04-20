@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from .routers import blog_get, blog_post
+from app.routers import blog_get, blog_post
 from app.db import models
 from app.db.database import engine
 
