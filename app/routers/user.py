@@ -22,6 +22,9 @@ def get_all_users(db: Session = Depends(get_db)):
     return db_user.get_all_users(db)
 
 # Read One User
+@router.get('/{id}', response_model=UserDisplay)
+def get_user(id, db: Session = Depends(get_db)):
+    return db_user.get_user(db, id)
 
 # Update User
 
