@@ -27,5 +27,8 @@ def get_user(id, db: Session = Depends(get_db)):
     return db_user.get_user(db, id)
 
 # Update User
+@router.post('/{id}/update')
+def update_user(id: int, request: UserBase, db: Session = Depends(get_db)):
+    return db_user.update_user(db, id, request)
 
 # Delete User
