@@ -20,3 +20,9 @@ class UserDisplay(BaseModel):
     items: List[Article] = []
     class Config():
         orm_mode = True
+
+class ArticleBase(BaseModel):
+    title: str
+    content: str
+    published: bool
+    creator_id: int
