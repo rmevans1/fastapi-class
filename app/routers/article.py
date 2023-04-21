@@ -13,7 +13,7 @@ router = APIRouter(
 # Create Article
 @router.post('/', response_model=ArticleDisplay)
 def create_article(request: ArticleBase, db: Session = Depends(get_db)):
-    return db_article.create_article(db, ArticleBase)
+    return db_article.create_article(db, request)
 
 # Get Article
 @router.get('/{id}', response_model=ArticleDisplay)
