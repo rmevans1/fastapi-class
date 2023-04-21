@@ -1,5 +1,5 @@
-from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
+from fastapi import FastAPI, Request, HTTPException
+from fastapi.responses import JSONResponse, PlainTextResponse
 from app.exceptions import StoryException
 from app.routers import blog_get, blog_post, user, article
 from app.db import models
@@ -21,6 +21,10 @@ def story_exception_handler(request: Request, exc: StoryException):
         status_code=418,
         content={'detail': exc.name}
     )
+
+#@app.exception_handler(HTTPException)
+#def custom_handler(request: Request, exc: StoryException):
+    #return PlainTextResponse(str(exc), status_code=400)
 
 models.Base.metadata.create_all(engine)
 
