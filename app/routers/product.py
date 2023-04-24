@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from fastapi.responses import Response, HTMLResponse
+from fastapi.responses import Response, HTMLResponse, PlainTextResponse
 
 router = APIRouter(
     prefix='/product',
@@ -15,19 +15,23 @@ def get_all_products():
 
 @router.get('/{id}')
 def get_product(id: int):
-    product = products[id]
-    out = f"""
-    <head>
-        <style>
-            .product {{
-                width: 500px;
-                height: 30px;
-                border: 2px inset green;
-                background-color: lightblue;
-                text-align: center;
-            }}
-        </style>
-    </head>
-    <div class="product">{product}</div>
-    """
-    return HTMLResponse(content=out, media_type="text/html")
+    if id > len(products):
+        out = "Product not available"
+        return PlainTextResponse(content=out, media_type="text/plain")
+    else:
+        product = products[id]
+        out = f"""
+        <head>
+            <style>
+                .product {{
+                    width: 500px;
+                    height: 30px;
+                    border: 2px inset green;
+                    background-color: lightblue;
+                    text-align: center;
+                }}
+            </style>
+        </head>
+        <div class="product">{product}</div>
+        """
+        return HTMLResponse(content=out, media_type="text/html")
