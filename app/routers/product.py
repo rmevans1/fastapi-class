@@ -17,7 +17,7 @@ def get_all_products():
 def get_product(id: int):
     if id > len(products):
         out = "Product not available"
-        return PlainTextResponse(content=out, media_type="text/plain")
+        return PlainTextResponse(status_code=404, content=out, media_type="text/plain")
     else:
         product = products[id]
         out = f"""
