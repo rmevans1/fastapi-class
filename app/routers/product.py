@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+from fastapi.responses import Response
 
 router = APIRouter(
     prefix='/product',
@@ -8,4 +9,6 @@ router = APIRouter(
 products = ['watch', 'camera', 'phone']
 @router.get('/all')
 def get_all_products():
-    return products
+    #return products
+    data = " ".join(products)
+    return Response(content=data, media_type="text/plain")
